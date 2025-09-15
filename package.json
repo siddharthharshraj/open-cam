@@ -1,0 +1,58 @@
+{
+  "name": "open-cam-studio",
+  "version": "1.0.0",
+  "description": "Professional web-based camera application with advanced Browser API capabilities",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "serve": "serve dist -s",
+    "analyze": "webpack-bundle-analyzer dist/stats.json"
+  },
+  "keywords": [
+    "camera",
+    "webrtc",
+    "mediadevices",
+    "screen-recording",
+    "vanilla-javascript",
+    "glassmorphism"
+  ],
+  "author": "Siddharth Harsh Raj <contact@siddharth-dev.tech>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "rimraf": "^5.0.5",
+    "serve": "^14.2.1",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.9",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.89.0",
+    "webpack-bundle-analyzer": "^4.9.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/open-cam-studio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/open-cam-studio/issues"
+  },
+  "homepage": "https://your-username.github.io/open-cam-studio"
+}

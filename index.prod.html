@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b82f6'%3E%3Cpath d='M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3z'/%3E%3C/svg%3E">
+    <title>ProCam - Professional Camera Studio</title>
+</head>
+
+<body>
+    <div class="video-cont">
+        <div class="camera-preview">
+            <video autoplay muted playsinline></video>
+            <div class="filter-layer"></div>
+        </div>
+    </div>
+    <div class="timer-cont">
+        <h1 class="timer">00:00:00</h1>
+    </div>
+    <div class="action-cont">
+        <div class="capture-btn-cont" title="Take Photo">
+            <div class="capture-btn"></div>
+        </div>
+        <div class="record-btn-cont" title="Record Video">
+            <div class="record-btn"></div>
+        </div>
+    </div>
+
+    <div class="filter-cont">
+        <div class="filter orange" title="Warm Filter"></div>
+        <div class="filter brown" title="Sepia Filter"></div>
+        <div class="filter pink" title="Rose Filter"></div>
+        <div class="filter transparent active" title="No Filter"></div>
+    </div>
+    <div class="filter-layer"></div>
+
+    <div class="gallery" title="Open Gallery">
+        <i class="fas fa-images"></i>
+        <span class="btn-caption">Gallery</span>
+    </div>
+
+    <!-- Camera Controls Panel -->
+    <div class="controls-panel" id="controlsPanel">
+        <div class="controls-content">
+            <div class="controls-header">
+                <h3>Camera Controls</h3>
+                <button class="close-controls" id="closeControls">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label>Camera Device:</label>
+                    <select id="cameraSelect" class="control-select">
+                        <option value="">Loading cameras...</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label>Microphone:</label>
+                    <select id="micSelect" class="control-select">
+                        <option value="">Loading microphones...</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label>Resolution:</label>
+                    <select id="resolutionSelect" class="control-select">
+                        <option value="1920x1080">1080p (1920×1080)</option>
+                        <option value="1280x720" selected>720p (1280×720)</option>
+                        <option value="640x480">480p (640×480)</option>
+                        <option value="3840x2160">4K (3840×2160)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group full-width">
+                    <label>Recording Mode:</label>
+                    <div class="mode-buttons">
+                        <button class="mode-btn active" data-mode="camera">Camera Only</button>
+                        <button class="mode-btn" data-mode="screen">Screen Only</button>
+                        <button class="mode-btn" data-mode="both">Camera + Screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Settings Button -->
+    <div class="settings-btn" id="settingsBtn" title="Camera Settings">
+        <i class="fas fa-cog"></i>
+        <span class="btn-caption">Settings</span>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer" id="appFooter">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <i class="fas fa-camera"></i>
+                    <span>ProCam Studio</span>
+                </div>
+                <div class="footer-info">
+                    <p>Built by <strong>Siddharth Harsh Raj</strong></p>
+                    <p class="tech-stack">Tech Stack: HTML5, CSS3, JavaScript ES6+, MediaDevices API, Screen Capture API, IndexedDB</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:contact@siddharth-dev.tech" class="footer-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@siddharth-dev.tech</span>
+                </a>
+                <a href="https://www.linkedin.com/in/siddharthharshraj/" target="_blank" class="footer-link" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn Profile</span>
+                </a>
+                <a href="https://siddharth-dev.tech" target="_blank" class="footer-link" title="Portfolio Website">
+                    <i class="fas fa-globe"></i>
+                    <span>Portfolio</span>
+                </a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; September 2025. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js"></script>
+    <script src="./db.js"></script>
+    <script src="script.min.js"></script>
+    <script>
+        let gallery = document.querySelector(".gallery");
+        gallery.addEventListener("click", (e) => {
+            location.assign("./gallery.html");
+        });
+        
+        // Controls panel functionality
+        const settingsBtn = document.getElementById('settingsBtn');
+        const controlsPanel = document.getElementById('controlsPanel');
+        const closeControls = document.getElementById('closeControls');
+        
+        settingsBtn.addEventListener('click', () => {
+            controlsPanel.classList.add('active');
+        });
+        
+        closeControls.addEventListener('click', () => {
+            controlsPanel.classList.remove('active');
+        });
+        
+        // Close panel when clicking outside
+        controlsPanel.addEventListener('click', (e) => {
+            if (e.target === controlsPanel) {
+                controlsPanel.classList.remove('active');
+            }
+        });
+        
+        // Footer is now always visible - no toggle needed
+    </script>
+</body>
+
+</html>
