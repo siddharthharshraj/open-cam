@@ -203,7 +203,7 @@ src/
 
 ## 📄 **License & Usage**
 
-© 2024 Siddharth Harsh Raj. All rights reserved.
+© 2025 Siddharth Harsh Raj. All rights reserved.
 
 This project demonstrates advanced web development skills and is available for portfolio review and technical assessment.
 
